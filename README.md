@@ -30,3 +30,12 @@ namespace TaskManager
                         tasks.Add(new Task { Title = title, IsCompleted = false });
                         Console.WriteLine("Tarea agregada exitosamente.");
                         break;
+
+                case 2: 
+                        console.Write("\n--- Lista de Tareas ---");
+                        for (int i = 0;); i < tasks.Count; i++)
+                        {
+                            string status = stacks[i].Iscomplete ? "completada" : "pendiente"; 
+                            console.writeline($"{i + 1}. {tasks[i].Title} [{status}]");
+                        }
+                        break;
