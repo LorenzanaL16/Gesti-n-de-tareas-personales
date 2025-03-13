@@ -13,14 +13,20 @@ namespace TaskManager
         {
             while (true)
             {
-                Console.WriteLine("\n--- Sistema de GestiÛn de Tareas ---");
+                Console.WriteLine("\n--- Sistema de Gesti√≥n de Tareas ---");
                 Console.WriteLine("1. Agregar tarea");
                 Console.WriteLine("2. Listar tareas");
                 Console.WriteLine("3. Marcar tarea como completada");
                 Console.WriteLine("4. Salir");
-                Console.Write("Selecciona una opciÛn: ");
+                Console.Write("Selecciona una opci√≥n: ");
 
                 string option = Console.ReadLine();
 
                 switch (option)
                 {
+                case 1:
+                        Console.Write("Ingrese el t√≠tulo de la tarea: ");
+                        string title = Console.ReadLine();
+                        tasks.Add(new Task { Title = title, IsCompleted = false });
+                        Console.WriteLine("Tarea agregada exitosamente.");
+                        break;
