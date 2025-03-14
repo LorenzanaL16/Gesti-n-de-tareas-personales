@@ -9,7 +9,7 @@ namespace TaskManager
     {
         static List<Task> tasks = new List<Task>();
 
-        static void Main(string[] args)
+        static Void Main(string[] args)
         {
             while (true)
             {
