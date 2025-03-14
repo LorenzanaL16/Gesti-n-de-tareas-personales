@@ -39,3 +39,17 @@ namespace TaskManager
                             console.writeline($"{i + 1}. {tasks[i].Title} [{status}]");
                         break;
                         }
+
+                case 3:
+                        Console.Write("Ingrese el número de la tarea a marcar como completada: ");
+                        int taskNumber = int.Parse(console.Readline())-1;
+                        if (taksNumber >= 0 && taskNumber < task.Count)
+                        {
+                            task[taskNumber].IsComplete = true;
+                            console.WriteLine("Tarea marcada como completada.");
+                        }
+                        else
+                        {
+                            console.WriteLine("Número de tarea inválido.");
+                        }
+                        break;
