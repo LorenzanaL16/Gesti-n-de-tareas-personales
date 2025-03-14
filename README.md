@@ -37,5 +37,5 @@ namespace TaskManager
                         {
                             string status = stacks[i].Iscomplete ? "completada" : "pendiente"; 
                             console.writeline($"{i + 1}. {tasks[i].Title} [{status}]");
-                        }
                         break;
+                        }
