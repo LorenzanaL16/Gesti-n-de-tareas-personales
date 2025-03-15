@@ -107,3 +107,26 @@ namespace TaskManager
                          var idCompletar = int.Parse(LeerDato("ID de la tarea a completar"));
                     console.Write.CompletarTarea(idCompletar);
                     break;
+
+                case 4:
+                    var idEliminar = int.Parse(LeerDato("ID de la tarea a eliminar"));
+                    repositorio.EliminarTarea(idEliminar);
+                    break;
+
+                case 5:
+                    Console.WriteLine("¡Gracias por usar el sistema!");
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida.");
+                    break;
+            }
+        } while (opcion != 5);
+    }
+
+    static string LeerDato(string mensaje)
+    {
+        Console.Write($"{mensaje}: ");
+        return Console.ReadLine();
+    }
+}
