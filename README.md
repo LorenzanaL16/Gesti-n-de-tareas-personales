@@ -1,55 +1,109 @@
-# Gesti-n-de-tareas-personales
+//Gesti-n-de-tareas-personales
+
+using System;
+public class Tarea
+{
+    public int Id { get; set; }
+    public string Titulo { get; set; }
+    public string Descripcion { get; set; }
+    public DateTime Fecha { get; set; }
+    public bool Completada { get; set; }
+
+     public override string ToString()
+    {
+        return $"ID: {Id}, Título: {Titulo}, Fecha: {Fecha.ToShortDateString()}, Completada: {Completada}";
+    }
+}
 
 using System;
 using System.Collections.Generic;
 
 namespace TaskManager
 {
+    private List<Tarea> tareas = new List<Tarea>();
+
+    public void AgregarTarea(Tarea tarea)
+    {
+        tareas.Add(tarea);
+        Console.WriteLine("¡Tarea agregada con éxito!");
+    }
+
+     public void ListarTareas()
+    {
+        Console.WriteLine("\n--- Lista de Tareas ---");
+        foreach (var tarea in tareas)
+        {
+            Console.WriteLine(tarea.ToString());
+        }
+    }
+
+    public void CompletarTarea(int id)
+    {
+        var tarea = tareas.Find(t => t.Id == id);
+        if (tarea != null)
+        {
+            tarea.Completada = true;
+            Console.WriteLine($"¡Tarea con ID {id} marcada como completada!");
+        }
+        else
+        {
+            Console.WriteLine($"No se encontró una tarea con ID {id}.");
+        }
+    }
+
+    public void EliminarTarea(int id)
+    {
+        var tarea = tareas.Find(t => t.Id == id);
+        if (tarea != null)
+        {
+            tareas.Remove(tarea);
+            Console.WriteLine($"¡Tarea con ID {id} eliminada!");
+        }
+        else
+        {
+            Console.WriteLine($"No se encontró una tarea con ID {id}.");
+        }
+    }
+
+    using System;
     class Program
     {
-        static List<Task> tasks = new List<Task>();
+        static void Main(string[] args)
+        {   
+         static List<Task> tasks = new List<Task>();
+         int option;
 
-        static Void Main(string[] args)
-        {
-            while (true)
-            {
+         do
+         {
                 Console.WriteLine("\n--- Sistema de Gestión de Tareas ---");
                 Console.WriteLine("1. Agregar tarea");
                 Console.WriteLine("2. Listar tareas");
-                Console.WriteLine("3. Marcar tarea como completada");
-                Console.WriteLine("4. Salir");
+                Console.WriteLine("3. Completar Tarea");
+                console.WriteLine("4. Eliminar Tarea");
+                Console.WriteLine("5. Salir");
                 Console.Write("Selecciona una opción: ");
-
-                string option = Console.ReadLine();
+                option = int.Parse(Console.Read());
 
                 switch (option)
                 {
                 case 1:
-                        Console.Write("Ingrese el título de la tarea: ");
-                        string title = Console.ReadLine();
-                        tasks.Add(new Task { Title = title, IsCompleted = false });
-                        Console.WriteLine("Tarea agregada exitosamente.");
+                     var nuevaTarea = new Tarea
+                    {
+                        Id = DateTime.Now.Millisecond, // Generador simple para ID
+                        Titulo = LeerDato("Título"),
+                        Descripcion = LeerDato("Descripción"),
+                        Fecha = DateTime.Parse(LeerDato("Fecha (yyyy-MM-dd)")),
+                        Completada = false
+                        };
+                        Console.WriteLine.AgregarTarea(nuevaTarea);
                         break;
 
                 case 2: 
                         console.Write("\n--- Lista de Tareas ---");
-                        for (int i = 0;); i < tasks.Count; i++)
-                        {
-                            string status = stacks[i].Iscomplete ? "completada" : "pendiente"; 
-                            console.writeline($"{i + 1}. {tasks[i].Title} [{status}]");
                         break;
                         }
 
                 case 3:
-                        Console.Write("Ingrese el número de la tarea a marcar como completada: ");
-                        int taskNumber = int.Parse(console.Readline())-1;
-                        if (taksNumber >= 0 && taskNumber < task.Count)
-                        {
-                            task[taskNumber].IsComplete = true;
-                            console.WriteLine("Tarea marcada como completada.");
-                        }
-                        else
-                        {
-                            console.WriteLine("Número de tarea inválido.");
-                        }
-                        break;
+                         var idCompletar = int.Parse(LeerDato("ID de la tarea a completar"));
+                    console.Write.CompletarTarea(idCompletar);
+                    break;
